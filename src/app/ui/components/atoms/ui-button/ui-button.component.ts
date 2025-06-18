@@ -29,7 +29,7 @@ export class UiButtonComponent {
 
 	getButtonClasses() {
 		const baseClasses =
-			'inline-flex items-center justify-center text-sm font-medium focus:outline-none'
+			'inline-flex items-center justify-center text-sm font-medium focus:outline-none cursor-pointer'
 		const variantClasses = {
 			primary:
 				'bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700',
