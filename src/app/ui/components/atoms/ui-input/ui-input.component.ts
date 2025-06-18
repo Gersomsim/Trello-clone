@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core'
 import { InputType } from '../../types/input.type'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { distinctUntilChanged, fromEvent, map, Subject, takeUntil } from 'rxjs'
+import { SizeType } from '../../types/size.type'
 
 @Component({
 	selector: 'app-ui-input',
@@ -22,6 +23,7 @@ export class UiInputComponent implements ControlValueAccessor {
 	@Input('inputId') id: string = ''
 	@Input() placeholder: string = ''
 	@Input() disabled: boolean = false
+	@Input() size: SizeType = 'md'
 
 	valueChanges$ = new Subject<string>()
 	destroy$ = new Subject<void>()
@@ -30,6 +32,19 @@ export class UiInputComponent implements ControlValueAccessor {
 	onTouched: () => void = () => {}
 
 	private currentValue: string = ''
+
+	getInputClasses() {
+		const baseClasses =
+			'font-light border border-gray-300 text-gray-900 rounded focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+
+		const sizeClasses = {
+			sm: 'text-xs p-1',
+			md: 'text-sm p-2',
+			lg: 'text-base p-3',
+			xl: 'text-lg p-4',
+		}
+		return `${baseClasses} ${sizeClasses[this.size]}`
+	}
 
 	ngAfterViewInit(): void {
 		this.updateInputValue(this.currentValue)
