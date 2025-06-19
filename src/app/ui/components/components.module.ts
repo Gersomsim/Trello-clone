@@ -16,6 +16,8 @@ import { UiPreviewBoardComponent } from './organism/ui-preview-board/ui-preview-
 import { UiNewBoardComponent } from './organism/ui-new-board/ui-new-board.component'
 import { UiFormNewBoardComponent } from './organism/ui-form-new-board/ui-form-new-board.component'
 import { UiSelectImageBoardComponent } from './organism/ui-select-image-board/ui-select-image-board.component'
+import { UiNewTaskComponent } from './organism/ui-new-task/ui-new-task.component'
+import { UiNewListComponent } from './organism/ui-new-list/ui-new-list.component'
 
 @NgModule({
 	declarations: [
@@ -30,6 +32,8 @@ import { UiSelectImageBoardComponent } from './organism/ui-select-image-board/ui
 		UiNewBoardComponent,
 		UiFormNewBoardComponent,
 		UiSelectImageBoardComponent,
+		UiNewTaskComponent,
+		UiNewListComponent,
 	],
 	imports: [
 		CommonModule,
@@ -50,6 +54,8 @@ import { UiSelectImageBoardComponent } from './organism/ui-select-image-board/ui
 		UiNewBoardComponent,
 		UiFormNewBoardComponent,
 		UiSelectImageBoardComponent,
+		UiNewTaskComponent,
+		UiNewListComponent,
 	],
 })
 export class ComponentsModule {}

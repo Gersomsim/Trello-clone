@@ -1,0 +1,19 @@
+@if (!isOpen()) {
+	<button
+		class="flex h-10 w-full gap-2 items-center justify-start group bg-gray-900 dark:bg-gray-800 rounded-lg p-2 hover:bg-gray-800 transition-all duration-300 dark:hover:bg-gray-700 cursor-pointer"
+		(click)="toggleIsOpen()"
+	>
+		<fa-icon [icon]="faPlus" class="text-sm" />
+		<span class="text-sm transition-all duration-500">New task</span>
+	</button>
+} @else {
+	<form class="flex flex-col gap-2">
+		<app-ui-input placeholder="New task" inputType="text" addClass="w-full" />
+		<div class="flex gap-2">
+			<app-ui-button variant="primary" addClass="w-full"> Add task </app-ui-button>
+			<app-ui-button variant="light" addClass="w-full" (click)="toggleIsOpen()">
+				<fa-icon [icon]="faXmark" />
+			</app-ui-button>
+		</div>
+	</form>
+}

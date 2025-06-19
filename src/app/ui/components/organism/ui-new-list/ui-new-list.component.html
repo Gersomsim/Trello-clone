@@ -1,0 +1,24 @@
+@if (!isOpen()) {
+	<button
+		(click)="toggleIsOpen()"
+		class="flex h-10 w-full gap-2 items-center justify-start group bg-gray-900 dark:bg-white/25 rounded-lg p-2 hover:bg-gray-800 transition-all duration-300 cursor-pointer"
+	>
+		<fa-icon [icon]="faPlus" class="text-sm text-white" />
+		<span class="text-sm text-white transition-all duration-500">New list</span>
+	</button>
+} @else {
+	<form class="flex flex-col gap-2 bg-gray-900 dark:bg-gray-950 rounded-lg p-4">
+		<app-ui-input
+			placeholder="New list"
+			inputType="text"
+			addClass="w-full"
+			size="sm"
+		/>
+		<div class="flex gap-2">
+			<app-ui-button variant="primary" addClass="w-full"> Add list </app-ui-button>
+			<app-ui-button variant="light" addClass="w-full" (click)="toggleIsOpen()">
+				<fa-icon [icon]="faXmark" />
+			</app-ui-button>
+		</div>
+	</form>
+}
