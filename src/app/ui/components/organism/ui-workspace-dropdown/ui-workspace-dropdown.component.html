@@ -1,0 +1,56 @@
+<cdk-accordion>
+	<div class="flex flex-col gap-2">
+		@for (workspace of workspaces; track workspace.id) {
+			<cdk-accordion-item #accordionItem="cdkAccordionItem">
+				<app-ui-button
+					variant="ghost"
+					size="md"
+					[fullWidth]="true"
+					(click)="accordionItem.toggle()"
+				>
+					<span class="flex items-center gap-2 justify-start w-full">
+						<app-ui-word-avatar [name]="workspace.name" size="sm" [limit]="true" />
+						<span class="">{{ workspace.name }}</span>
+					</span>
+					<fa-icon
+						[icon]="accordionItem.expanded ? faChevronUp : faChevronDown"
+						class="ml-auto"
+					/>
+				</app-ui-button>
+				@if (accordionItem.expanded) {
+					<div class="flex flex-col gap-2 mt-2">
+						<app-ui-button
+							variant="ghost"
+							size="sm"
+							[fullWidth]="true"
+							[routerLink]="['/w', workspace.id]"
+						>
+							<span class="flex items-center gap-2 justify-start w-full pl-2">
+								<fa-icon [icon]="faTrello" />
+								<span class="">Dashboard</span>
+							</span>
+						</app-ui-button>
+						<app-ui-button variant="ghost" size="sm" [fullWidth]="true" addClass="group">
+							<span class="flex items-center gap-2 justify-between w-full px-2">
+								<span class="flex items-center gap-2">
+									<fa-icon [icon]="faUsers" />
+									<span class="">Members</span>
+								</span>
+								<span class="flex items-center gap-3">
+									<fa-icon [icon]="faPlus" />
+									<fa-icon [icon]="faChevronRight" class="hidden group-hover:block" />
+								</span>
+							</span>
+						</app-ui-button>
+						<app-ui-button variant="ghost" size="sm" [fullWidth]="true">
+							<span class="flex items-center gap-2 justify-start w-full pl-2">
+								<fa-icon [icon]="faCog" />
+								<span class="">Settings</span>
+							</span>
+						</app-ui-button>
+					</div>
+				}
+			</cdk-accordion-item>
+		}
+	</div>
+</cdk-accordion>

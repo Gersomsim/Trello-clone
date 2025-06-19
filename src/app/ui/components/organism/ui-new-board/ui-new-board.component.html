@@ -1,0 +1,37 @@
+<button
+	type="button"
+	cdkOverlayOrigin
+	#trigger="cdkOverlayOrigin"
+	(click)="toggle()"
+	class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-full h-full justify-center cursor-pointer"
+>
+	<span class="text-sm text-gray-500 dark:text-gray-300">New board</span>
+</button>
+<ng-template
+	cdkConnectedOverlay
+	[cdkConnectedOverlayOrigin]="trigger"
+	[cdkConnectedOverlayOpen]="isOpen()"
+	[cdkConnectedOverlayPositions]="rightSidePositions"
+	[cdkConnectedOverlayOffsetX]="0"
+	[cdkConnectedOverlayWidth]="'350px'"
+	[cdkConnectedOverlayViewportMargin]="10"
+	[cdkConnectedOverlayMinWidth]="'350px'"
+	(detach)="isOpen.set(false)"
+>
+	<div
+		class="w-full px-2 py-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+	>
+		<h2 class="text-sm font-bold text-center text-gray-500 dark:text-gray-300">
+			New board
+		</h2>
+		<div class="flex flex-col gap-2 my-4 relative h-32">
+			<img
+				src="https://picsum.photos/600/300"
+				alt="Image"
+				class="w-3/4 mx-auto rounded-lg overflow-hidden absolute top-0 left-0 h-full object-cover right-0"
+			/>
+		</div>
+		<app-ui-select-image-board />
+		<app-ui-form-new-board />
+	</div>
+</ng-template>

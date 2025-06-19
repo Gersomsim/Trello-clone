@@ -1,0 +1,23 @@
+<div class="flex flex-col gap-4">
+	<app-ui-button variant="ghost" size="md" [fullWidth]="true">
+		<span class="flex items-center gap-2 justify-start w-full">
+			<fa-icon [icon]="faTrello" class="" />
+			<span class="">Dashboard</span>
+		</span>
+	</app-ui-button>
+	<app-ui-button variant="ghost" size="md" [fullWidth]="true">
+		<span class="flex items-center gap-2 justify-start w-full">
+			<fa-icon [icon]="faTrello" class="" />
+			<span class="">Templates</span>
+		</span>
+	</app-ui-button>
+	<app-ui-button variant="ghost" size="md" [fullWidth]="true">
+		<span class="flex items-center gap-2 justify-start w-full">
+			<fa-icon [icon]="faWaveSquare" class="" />
+			<span class="">Home</span>
+		</span>
+	</app-ui-button>
+	<hr class="my-2 border-gray-100 dark:border-gray-700" />
+	<h5 class="text-sm font-medium text-gray-500">Workspace</h5>
+	<ng-content></ng-content>
+</div>

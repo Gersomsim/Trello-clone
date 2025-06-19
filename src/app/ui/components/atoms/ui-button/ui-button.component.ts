@@ -19,6 +19,7 @@ export class UiButtonComponent {
 	@Input() size: ButtonSize = 'md'
 	@Input() fullWidth: boolean = false
 	@Input() rounded: ButtonRounded = 'md'
+	@Input() addClass: string = ''
 
 	@Output() Click = new EventEmitter<void>()
 
@@ -59,6 +60,6 @@ export class UiButtonComponent {
 			none: 'rounded-none',
 		}
 
-		return `${baseClasses} ${variantClasses[this.variant]} ${sizeClasses[this.size]} ${roundedClasses[this.rounded]} ${this.fullWidth ? 'w-full' : ''}`
+		return `${baseClasses} ${variantClasses[this.variant]} ${sizeClasses[this.size]} ${roundedClasses[this.rounded]} ${this.fullWidth ? 'w-full' : ''} ${this.addClass}`
 	}
 }
