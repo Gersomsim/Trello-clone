@@ -3,7 +3,7 @@
 	cdkOverlayOrigin
 	#trigger="cdkOverlayOrigin"
 	(click)="toggle()"
-	class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-full h-full justify-center cursor-pointer"
+	class="{{ getClasses() }}"
 >
 	<span class="text-sm text-gray-500 dark:text-gray-300">New board</span>
 </button>

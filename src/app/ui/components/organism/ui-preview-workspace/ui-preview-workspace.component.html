@@ -1,0 +1,34 @@
+<div class="flex flex-col gap-3 my-3">
+	<div class="flex justify-between">
+		<div class="flex items-center gap-2">
+			<app-ui-word-avatar [name]="workspace.name" [limit]="true" size="sm" />
+			<span class="font-medium">{{ workspace.name }}</span>
+		</div>
+		<div class="flex items-center gap-2">
+			<app-ui-link variant="ghost" type="button" routerLink="/w/{{ workspace.id }}">
+				<span class="flex gap-2">
+					<fa-icon [icon]="faTrello" />
+					<span>Task Board</span>
+				</span>
+			</app-ui-link>
+			<app-ui-button variant="ghost">
+				<span class="flex gap-2">
+					<fa-icon [icon]="faUser" />
+					<span>Members {{ workspace.members }}</span>
+				</span>
+			</app-ui-button>
+			<app-ui-button variant="ghost">
+				<span class="flex gap-2">
+					<fa-icon [icon]="faCog" />
+					<span>Settings</span>
+				</span>
+			</app-ui-button>
+		</div>
+	</div>
+	<div class="grid grid-cols-3 gap-2">
+		@for (board of boards; track board.id) {
+			<app-ui-preview-board [board]="board" />
+		}
+		<app-ui-new-board />
+	</div>
+</div>

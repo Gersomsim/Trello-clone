@@ -1,5 +1,6 @@
 import { ConnectionPositionPair } from '@angular/cdk/overlay'
-import { Component, effect, signal } from '@angular/core'
+import { Component, effect, Input, signal } from '@angular/core'
+import { SizeType } from '../../types/size.type'
 
 @Component({
 	selector: 'app-ui-new-board',
@@ -9,6 +10,19 @@ import { Component, effect, signal } from '@angular/core'
 })
 export class UiNewBoardComponent {
 	isOpen = signal(false)
+	@Input() size: SizeType = 'xl'
+
+	getClasses() {
+		const baseClasses =
+			'flex items-center gap-2 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 w-full h-full justify-center cursor-pointer '
+		const sizeClasses = {
+			sm: 'min-h-10',
+			md: 'min-h-12',
+			lg: 'min-h-16',
+			xl: 'min-h-24',
+		}
+		return `${baseClasses} ${sizeClasses[this.size]}`
+	}
 
 	toggle() {
 		this.isOpen.set(!this.isOpen())
@@ -23,9 +37,9 @@ export class UiNewBoardComponent {
 		),
 		new ConnectionPositionPair(
 			{ originX: 'start', originY: 'bottom' },
-			{ overlayX: 'start', overlayY: 'bottom' },
-			10,
+			{ overlayX: 'end', overlayY: 'center' },
 			-10,
+			10,
 		),
 	]
 

@@ -1,0 +1,15 @@
+<button
+	class="flex h-10 w-full gap-2 items-center justify-between group bg-gray-900 dark:bg-gray-800 rounded-lg p-2 hover:bg-gray-800 transition-all duration-300 dark:hover:bg-gray-700 cursor-pointer"
+	(click)="openModal()"
+>
+	<span class="flex gap-2 items-center">
+		<span
+			class="w-4 h-4 border border-gray-500 rounded-full hidden group-hover:block transition-all duration-500"
+		></span>
+		<span class="text-sm transition-all duration-500">{{ task.name }}</span>
+	</span>
+	<fa-icon
+		[icon]="faPencil"
+		class="hidden group-hover:block transition-all duration-500"
+	/>
+</button>

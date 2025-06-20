@@ -1,0 +1,37 @@
+<div class="flex gap-4">
+	<div class="w-3/5">
+		<app-ui-card [image]="'https://picsum.photos/600/200'">
+			<h1 class="text-lg font-bold text-center py-4">Welcome to Trello</h1>
+			<p>
+				Trello is a project management tool that helps you organize your work and
+				collaborate with others.
+			</p>
+		</app-ui-card>
+	</div>
+	<div class="w-2/5">
+		<h4 class="font-bold flex items-center gap-2 mb-4 text-sm">
+			<fa-icon [icon]="faClock" />
+			<span>Recent activity</span>
+		</h4>
+		<div class="flex flex-col gap-3">
+			@for (board of recentActivity; track board.id) {
+				<app-ui-link
+					variant="ghost"
+					type="button"
+					routerLink="/b/{{ board.id }}/tasks"
+					[fullWidth]="true"
+					size="sm"
+				>
+					<span class="flex justify-start items-center gap-2 w-full">
+						<img src="https://picsum.photos/600/200" alt="avatar" class="h-10" />
+						<span class="flex flex-col">
+							<span>{{ board.name }}</span>
+							<span>{{ board.meta?.workspaceName }}</span>
+						</span>
+					</span>
+				</app-ui-link>
+			}
+			<app-ui-new-board size="md" />
+		</div>
+	</div>
+</div>

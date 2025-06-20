@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core'
-import { BoardLayoutComponent } from '../../../ui/layouts/board-layout/board-layout.component'
 import { ComponentsModule } from '../../../ui/components/components.module'
 import { Workspace } from '@core/domain/entities'
 import { RouterModule } from '@angular/router'
 
 @Component({
 	selector: 'app-board-page',
-	imports: [BoardLayoutComponent, ComponentsModule, RouterModule],
+	imports: [ComponentsModule, RouterModule],
 	templateUrl: './board-page.component.html',
 	styles: ``,
 })

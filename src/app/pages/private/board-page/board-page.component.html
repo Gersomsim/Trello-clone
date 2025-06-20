@@ -1,14 +1,12 @@
-<app-board-layout>
-	<div class="w-full max-w-[1024px] mx-auto md:mt-10">
-		<div class="flex gap-4">
-			<aside class="w-1/4 p-2">
-				<app-ui-aside-board>
-					<app-ui-workspace-dropdown [workspaces]="workspaces()" />
-				</app-ui-aside-board>
-			</aside>
-			<div class="w-3/4 p-2">
-				<router-outlet></router-outlet>
-			</div>
+<div class="w-full max-w-[1024px] mx-auto md:mt-10">
+	<div class="flex gap-4">
+		<aside class="w-1/4 p-2">
+			<app-ui-aside-board>
+				<app-ui-workspace-dropdown [workspaces]="workspaces()" />
+			</app-ui-aside-board>
+		</aside>
+		<div class="w-3/4 p-2">
+			<router-outlet></router-outlet>
 		</div>
 	</div>
-</app-board-layout>
+</div>

@@ -19,9 +19,9 @@ export class UiWordAvatarComponent {
 	getSize() {
 		switch (this.size) {
 			case 'sm':
-				return 'w-5 h-5 rounded object-cover'
-			case 'md':
 				return 'w-6 h-6 rounded object-cover'
+			case 'md':
+				return 'w-10 h-10 rounded object-cover'
 			case 'lg':
 				return 'w-16 h-16 rounded object-cover'
 			case 'xl':

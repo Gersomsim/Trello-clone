@@ -1,0 +1,11 @@
+<div class="flex flex-col gap-4">
+	<app-ui-recent-activity />
+	<div>
+		<h4 class="font-bold flex items-center gap-2">
+			<span>YOUR WORKSPACES</span>
+		</h4>
+		@for (workspace of workspaces; track workspace.id) {
+			<app-ui-preview-workspace [workspace]="workspace" />
+		}
+	</div>
+</div>

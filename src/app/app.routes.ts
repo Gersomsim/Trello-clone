@@ -3,6 +3,9 @@ import { LoginComponent } from './pages/login/login.component'
 import { BoardPageComponent } from './pages/private/board-page/board-page.component'
 import { WorkspaceDashboardPageComponent } from './pages/private/workspace-dashboard-page/workspace-dashboard-page.component'
 import { BoardTaskPageComponent } from './pages/private/board-task-page/board-task-page.component'
+import { PrivateComponent } from './pages/private/private.component'
+import { HomePageComponent } from './pages/private/home-page/home-page.component'
+import { StartPageComponent } from './pages/private/start-page/start-page.component'
 
 export const routes: Routes = [
 	{
@@ -16,13 +19,22 @@ export const routes: Routes = [
 	},
 	{
 		path: '',
+		component: PrivateComponent,
 		children: [
 			{
-				path: 'w',
+				path: '',
 				component: BoardPageComponent,
 				children: [
 					{
-						path: ':workspaceId',
+						path: '',
+						component: StartPageComponent,
+					},
+					{
+						path: 'u/:userId/boards',
+						component: HomePageComponent,
+					},
+					{
+						path: 'w/:workspaceId',
 						component: WorkspaceDashboardPageComponent,
 					},
 				],

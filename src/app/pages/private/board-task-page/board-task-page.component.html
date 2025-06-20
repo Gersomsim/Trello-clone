@@ -1,53 +1,38 @@
-<app-board-layout>
-	<div
-		class="w-full h-full bg-cover bg-center flex flex-col gap-4 overflow-hidden"
-		[style.background-image]="'url(' + board()?.image + ')'"
-	>
-		<nav class="flex justify-between items-center bg-gray-900/30 px-4 py-4">
-			<div>
-				<h1>{{ board()?.name }}</h1>
-			</div>
-			<div>
-				<app-ui-button variant="light">
-					<span class="flex gap-2 items-center">
-						<fa-icon [icon]="faShare" />
-						<span>Share</span>
-					</span>
-				</app-ui-button>
-			</div>
-		</nav>
-		<div class="flex flex-row gap-4 grow w-full mx-4 h-full">
-			<div
-				class="w-2/10 bg-gray-950 rounded-lg p-4 overflow-y-auto flex flex-col gap-4 shadow-lg h-fit max-h-full"
-			>
-				<div class="flex flex-col gap-4">
-					<div class="flex flex-row gap-2 justify-between items-center">
-						<h2>Nombre del tablero</h2>
-						<div>...</div>
-					</div>
-				</div>
-				<div class="flex flex-col gap-4">
-					<button
-						class="flex h-10 w-full gap-2 items-center justify-between group bg-gray-900 dark:bg-gray-800 rounded-lg p-2 hover:bg-gray-800 transition-all duration-300 dark:hover:bg-gray-700 cursor-pointer"
-					>
-						<span class="flex gap-2 items-center">
-							<span
-								class="w-4 h-4 border border-gray-500 rounded-full hidden group-hover:block transition-all duration-500"
-							></span>
-							<span class="text-sm transition-all duration-500">Tareas</span>
-						</span>
-						<fa-icon
-							[icon]="faPencil"
-							class="hidden group-hover:block transition-all duration-500"
-						/>
-					</button>
-
-					<app-ui-new-task />
+<div
+	class="w-full h-full bg-cover bg-center flex flex-col gap-4 overflow-hidden"
+	[style.background-image]="'url(' + board()?.image + ')'"
+>
+	<nav class="flex justify-between items-center bg-gray-900/30 px-4 py-4">
+		<div>
+			<h1>{{ board()?.name }}</h1>
+		</div>
+		<div>
+			<app-ui-button variant="light">
+				<span class="flex gap-2 items-center">
+					<fa-icon [icon]="faShare" />
+					<span>Share</span>
+				</span>
+			</app-ui-button>
+		</div>
+	</nav>
+	<div class="flex flex-row gap-4 grow w-full mx-4 h-full">
+		<div
+			class="w-2/10 bg-gray-950 rounded-lg p-4 overflow-y-auto flex flex-col gap-4 shadow-lg h-fit max-h-full"
+		>
+			<div class="flex flex-col gap-4">
+				<div class="flex flex-row gap-2 justify-between items-center">
+					<h2>Nombre del tablero</h2>
+					<div>...</div>
 				</div>
 			</div>
-			<div class="w-2/10">
-				<app-ui-new-list />
+			<div class="flex flex-col gap-4">
+				@for (task of tasks; track task.id) {
+					<app-ui-task [task]="task" />
+				}
 			</div>
 		</div>
+		<div class="w-2/10">
+			<app-ui-new-list />
+		</div>
 	</div>
-</app-board-layout>
+</div>

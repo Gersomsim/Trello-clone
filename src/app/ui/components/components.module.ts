@@ -18,6 +18,13 @@ import { UiFormNewBoardComponent } from './organism/ui-form-new-board/ui-form-ne
 import { UiSelectImageBoardComponent } from './organism/ui-select-image-board/ui-select-image-board.component'
 import { UiNewTaskComponent } from './organism/ui-new-task/ui-new-task.component'
 import { UiNewListComponent } from './organism/ui-new-list/ui-new-list.component'
+import { UiLinkComponent } from './atoms/ui-link/ui-link.component'
+import { UiPreviewWorkspaceComponent } from './organism/ui-preview-workspace/ui-preview-workspace.component'
+import { UiRecentActivityComponent } from './organism/ui-recent-activity/ui-recent-activity.component'
+import { UiCardComponent } from './molecules/ui-card/ui-card.component'
+import { UiEditFullTaskComponent } from './organism/ui-edit-full-task/ui-edit-full-task.component'
+import { DialogModule } from '@angular/cdk/dialog'
+import { UiTaskComponent } from './molecules/ui-task/ui-task.component'
 
 @NgModule({
 	declarations: [
@@ -34,6 +41,12 @@ import { UiNewListComponent } from './organism/ui-new-list/ui-new-list.component
 		UiSelectImageBoardComponent,
 		UiNewTaskComponent,
 		UiNewListComponent,
+		UiLinkComponent,
+		UiPreviewWorkspaceComponent,
+		UiRecentActivityComponent,
+		UiCardComponent,
+		UiEditFullTaskComponent,
+		UiTaskComponent,
 	],
 	imports: [
 		CommonModule,
@@ -41,6 +54,7 @@ import { UiNewListComponent } from './organism/ui-new-list/ui-new-list.component
 		CdkAccordionModule,
 		RouterModule,
 		OverlayModule,
+		DialogModule,
 	],
 	exports: [
 		UiInputComponent,
@@ -56,6 +70,12 @@ import { UiNewListComponent } from './organism/ui-new-list/ui-new-list.component
 		UiSelectImageBoardComponent,
 		UiNewTaskComponent,
 		UiNewListComponent,
+		UiLinkComponent,
+		UiPreviewWorkspaceComponent,
+		UiRecentActivityComponent,
+		UiCardComponent,
+		UiEditFullTaskComponent,
+		UiTaskComponent,
 	],
 })
 export class ComponentsModule {}
