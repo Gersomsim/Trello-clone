@@ -18,7 +18,8 @@
 		"target": "ES2022",
 		"module": "ES2022",
 		"paths": {
-			"@core/domain/*": ["./src/app/core/domain/*"]
+			"@core/domain/*": ["./src/app/core/domain/*"],
+			"@infrastructure/*": ["./src/app/infrastructure/*"]
 		}
 	},
 	"angularCompilerOptions": {

@@ -6,6 +6,7 @@ import { BoardTaskPageComponent } from './pages/private/board-task-page/board-ta
 import { PrivateComponent } from './pages/private/private.component'
 import { HomePageComponent } from './pages/private/home-page/home-page.component'
 import { StartPageComponent } from './pages/private/start-page/start-page.component'
+import { authGuard } from './core/application/guard/auth.guard'
 
 export const routes: Routes = [
 	{
@@ -20,6 +21,7 @@ export const routes: Routes = [
 	{
 		path: '',
 		component: PrivateComponent,
+		canActivate: [authGuard],
 		children: [
 			{
 				path: '',
