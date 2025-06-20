@@ -22,6 +22,8 @@
 		"@fortawesome/angular-fontawesome": "^1.0.0",
 		"@fortawesome/free-brands-svg-icons": "^6.7.1",
 		"@fortawesome/free-solid-svg-icons": "^6.7.1",
+		"@ngneat/elf-entities": "^5.0.2",
+		"@ngneat/elf-persist-state": "^1.2.1",
 		"@tailwindcss/postcss": "^4.1.10",
 		"ngx-cookie-service": "^19.1.2",
 		"postcss": "^8.5.6",
