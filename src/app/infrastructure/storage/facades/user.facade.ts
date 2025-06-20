@@ -22,7 +22,7 @@ export class UserFacade {
 
 			return Promise.resolve(user)
 		} else {
-			throw new Error('Invalid email or password')
+			return Promise.reject(new Error('Invalid email or password'))
 		}
 	}
 
