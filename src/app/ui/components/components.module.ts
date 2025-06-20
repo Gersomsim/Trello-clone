@@ -25,6 +25,7 @@ import { UiCardComponent } from './molecules/ui-card/ui-card.component'
 import { UiEditFullTaskComponent } from './organism/ui-edit-full-task/ui-edit-full-task.component'
 import { DialogModule } from '@angular/cdk/dialog'
 import { UiTaskComponent } from './molecules/ui-task/ui-task.component'
+import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
 	declarations: [
@@ -55,6 +56,7 @@ import { UiTaskComponent } from './molecules/ui-task/ui-task.component'
 		RouterModule,
 		OverlayModule,
 		DialogModule,
+		ReactiveFormsModule,
 	],
 	exports: [
 		UiInputComponent,

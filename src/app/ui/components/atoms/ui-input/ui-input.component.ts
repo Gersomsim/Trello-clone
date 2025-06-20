@@ -66,10 +66,11 @@ export class UiInputComponent implements ControlValueAccessor {
 			})
 	}
 
-	updateInputValue(value: string): void {
-		this.currentValue = value
-		this.inputElement.nativeElement.value =
-			value !== null && value !== undefined ? value : ''
+	private updateInputValue(value: any): void {
+		if (this.inputElement?.nativeElement) {
+			this.inputElement.nativeElement.value =
+				value !== null && value !== undefined ? value : ''
+		}
 	}
 
 	// ControlValueAccessor
