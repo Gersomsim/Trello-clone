@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { User } from '@core/domain/entities'
-import { CookieService } from '@infrastructure/libs/cookie.sevice'
+import { CookieService } from '@infrastructure/libs/cookie.service'
 import { UserStore } from '../store/user.store'
 
 @Injectable({ providedIn: 'root' })
