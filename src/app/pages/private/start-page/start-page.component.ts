@@ -1,33 +1,27 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { ComponentsModule } from '../../../ui/components/components.module'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { Board } from '@core/domain/entities'
+import { BoardRecentFacade } from '@infrastructure/storage/facades/board-recent.facade'
+import { CommonModule } from '@angular/common'
+import { bgColors } from '../../../ui/components/utils/bg-colors.util'
 
 @Component({
 	selector: 'app-start-page',
-	imports: [ComponentsModule, FontAwesomeModule],
+	imports: [ComponentsModule, FontAwesomeModule, CommonModule],
 	templateUrl: './start-page.component.html',
 	styles: ``,
 })
 export class StartPageComponent {
+	boardRecentFacade = inject(BoardRecentFacade)
 	faClock = faClock
-	recentActivity: Board[] = [
-		{
-			id: '1',
-			name: 'Board 1',
-			image: 'https://picsum.photos/600/200',
-			meta: {
-				workspaceName: 'Workspace 1',
-			},
-		},
-		{
-			id: '2',
-			name: 'Board 2',
-			image: 'https://picsum.photos/600/200',
-			meta: {
-				workspaceName: 'Workspace 2',
-			},
-		},
-	]
+	recentActivity: Board[] = []
+	bgColors = bgColors
+	ngOnInit() {
+		this.boardRecentFacade.loadBoards()
+		this.boardRecentFacade.boardsRecent$.subscribe((boards) => {
+			this.recentActivity = boards
+		})
+	}
 }

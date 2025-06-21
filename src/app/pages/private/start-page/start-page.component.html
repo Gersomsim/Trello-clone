@@ -23,7 +23,11 @@
 					size="sm"
 				>
 					<span class="flex justify-start items-center gap-2 w-full">
-						<img src="https://picsum.photos/600/200" alt="avatar" class="h-10" />
+						@if (board.image) {
+							<img [src]="board.image" alt="avatar" class="h-10" />
+						} @else {
+							<div [ngClass]="bgColors(board.color)" class="h-10 w-15 rounded"></div>
+						}
 						<span class="flex flex-col">
 							<span>{{ board.name }}</span>
 							<span>{{ board.meta?.workspaceName }}</span>

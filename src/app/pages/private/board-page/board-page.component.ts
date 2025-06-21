@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core'
+import { Component, inject, signal } from '@angular/core'
 import { ComponentsModule } from '../../../ui/components/components.module'
 import { Workspace } from '@core/domain/entities'
 import { RouterModule } from '@angular/router'
+import { WorkspaceFacade } from '@infrastructure/storage/facades/workspace.facade'
 
 @Component({
 	selector: 'app-board-page',
@@ -10,16 +11,13 @@ import { RouterModule } from '@angular/router'
 	styles: ``,
 })
 export class BoardPageComponent {
-	workspaces = signal<Workspace[]>([
-		{
-			id: '1',
-			name: 'Workspace 1',
-			public: true,
-		},
-		{
-			id: '2',
-			name: 'Workspace 2',
-			public: false,
-		},
-	])
+	workspaceFacade = inject(WorkspaceFacade)
+
+	workspaces = signal<Workspace[]>([])
+
+	ngOnInit() {
+		this.workspaceFacade.workspaces$.subscribe((workspaces) => {
+			this.workspaces.set(workspaces)
+		})
+	}
 }

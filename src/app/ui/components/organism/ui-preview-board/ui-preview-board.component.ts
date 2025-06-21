@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { Board } from '@core/domain/entities'
+import { bgColors } from '../../utils/bg-colors.util'
 
 @Component({
 	selector: 'app-ui-preview-board',
@@ -9,4 +10,5 @@ import { Board } from '@core/domain/entities'
 })
 export class UiPreviewBoardComponent {
 	@Input() board!: Board
+	bgColors = bgColors
 }

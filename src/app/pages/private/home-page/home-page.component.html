@@ -4,7 +4,7 @@
 		<h4 class="font-bold flex items-center gap-2">
 			<span>YOUR WORKSPACES</span>
 		</h4>
-		@for (workspace of workspaces; track workspace.id) {
+		@for (workspace of workspaces(); track workspace.id) {
 			<app-ui-preview-workspace [workspace]="workspace" />
 		}
 	</div>

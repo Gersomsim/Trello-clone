@@ -1,7 +1,10 @@
-import { Component } from '@angular/core'
+import { Component, inject, signal } from '@angular/core'
 import { faWaveSquare } from '@fortawesome/free-solid-svg-icons'
 import { faTrello } from '@fortawesome/free-brands-svg-icons'
 import { User } from '@core/domain/entities/user.entity'
+import { WorkspaceFacade } from '@infrastructure/storage/facades/workspace.facade'
+import { Workspace } from '@core/domain/entities'
+import { BoardRecentFacade } from '@infrastructure/storage/facades/board-recent.facade'
 
 @Component({
 	selector: 'app-ui-aside-board',
@@ -10,6 +13,9 @@ import { User } from '@core/domain/entities/user.entity'
 	styles: ``,
 })
 export class UiAsideBoardComponent {
+	workspaceFacade = inject(WorkspaceFacade)
+	boardRecentFacade = inject(BoardRecentFacade)
+	workspaces = signal<Workspace[]>([])
 	user: User = {
 		id: '1',
 		email: 'test@test.com',
@@ -17,4 +23,12 @@ export class UiAsideBoardComponent {
 	}
 	faTrello = faTrello
 	faWaveSquare = faWaveSquare
+
+	ngOnInit() {
+		this.workspaceFacade.loadWorkspaces()
+		this.workspaceFacade.workspaces$.subscribe((workspaces) => {
+			this.workspaces.set(workspaces)
+		})
+		this.boardRecentFacade.loadBoards()
+	}
 }

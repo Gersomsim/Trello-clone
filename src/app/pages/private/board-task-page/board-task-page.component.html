@@ -1,38 +1,50 @@
-<div
-	class="w-full h-full bg-cover bg-center flex flex-col gap-4 overflow-hidden"
-	[style.background-image]="'url(' + board()?.image + ')'"
->
-	<nav class="flex justify-between items-center bg-gray-900/30 px-4 py-4">
-		<div>
-			<h1>{{ board()?.name }}</h1>
-		</div>
-		<div>
-			<app-ui-button variant="light">
-				<span class="flex gap-2 items-center">
-					<fa-icon [icon]="faShare" />
-					<span>Share</span>
-				</span>
-			</app-ui-button>
-		</div>
-	</nav>
-	<div class="flex flex-row gap-4 grow w-full mx-4 h-full">
-		<div
-			class="w-2/10 bg-gray-950 rounded-lg p-4 overflow-y-auto flex flex-col gap-4 shadow-lg h-fit max-h-full"
-		>
-			<div class="flex flex-col gap-4">
-				<div class="flex flex-row gap-2 justify-between items-center">
-					<h2>Nombre del tablero</h2>
-					<div>...</div>
+@if (board) {
+	<div
+		class="w-full h-full flex flex-col gap-4 overflow-hidden relative bg-cover bg-center"
+		[ngStyle]="{
+			'background-image': board.image ? 'url(' + board.image + ')' : 'none',
+		}"
+	>
+		<!-- Overlay para el color de fondo -->
+		@if (board.color) {
+			<div class="absolute inset-0 opacity-60" [class]="bgColors(board.color)"></div>
+		}
+
+		<!-- Contenido principal con z-index para estar sobre el overlay -->
+		<div class="relative z-10 flex flex-col gap-4 h-full">
+			<nav class="flex justify-between items-center bg-gray-900/30 px-4 py-4">
+				<div>
+					<h1>{{ board.name }}</h1>
+				</div>
+				<div>
+					<app-ui-button variant="light">
+						<span class="flex gap-2 items-center">
+							<fa-icon [icon]="faShare" />
+							<span>Share</span>
+						</span>
+					</app-ui-button>
+				</div>
+			</nav>
+			<div class="flex flex-row gap-4 grow w-full mx-4 h-full">
+				<div
+					class="w-2/10 bg-gray-950 rounded-lg p-4 overflow-y-auto flex flex-col gap-4 shadow-lg h-fit max-h-full"
+				>
+					<div class="flex flex-col gap-4">
+						<div class="flex flex-row gap-2 justify-between items-center">
+							<h2>Nombre del tablero</h2>
+							<div>...</div>
+						</div>
+					</div>
+					<div class="flex flex-col gap-4">
+						@for (task of tasks; track task.id) {
+							<app-ui-task [task]="task" />
+						}
+					</div>
+				</div>
+				<div class="w-2/10">
+					<app-ui-new-list />
 				</div>
 			</div>
-			<div class="flex flex-col gap-4">
-				@for (task of tasks; track task.id) {
-					<app-ui-task [task]="task" />
-				}
-			</div>
-		</div>
-		<div class="w-2/10">
-			<app-ui-new-list />
 		</div>
 	</div>
-</div>
+}

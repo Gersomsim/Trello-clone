@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
+import { Component, inject, signal } from '@angular/core'
 import { Board } from '@core/domain/entities'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
+import { BoardRecentFacade } from '@infrastructure/storage/facades/board-recent.facade'
 
 @Component({
 	selector: 'app-ui-recent-activity',
@@ -9,12 +10,13 @@ import { faClock } from '@fortawesome/free-solid-svg-icons'
 	styles: ``,
 })
 export class UiRecentActivityComponent {
+	boardRecentFacade = inject(BoardRecentFacade)
 	faClock = faClock
-	boards: Board[] = [
-		{
-			id: '1',
-			name: 'Board 1',
-			image: 'https://picsum.photos/600/200',
-		},
-	]
+	boards = signal<Board[]>([])
+
+	ngOnInit() {
+		this.boardRecentFacade.boardsRecent$.subscribe((boards) => {
+			this.boards.set(boards)
+		})
+	}
 }

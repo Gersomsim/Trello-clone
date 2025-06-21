@@ -1,52 +1,57 @@
 <div class="my-2">
 	<p class="text-sm text-gray-500 dark:text-gray-300 mb-2">Background image</p>
 	<div class="grid grid-cols-4 gap-2">
-		<img
-			src="https://picsum.photos/600/300"
-			alt="Image"
-			class="w-full h-full object-cover"
-		/>
-		<img
-			src="https://picsum.photos/600/300"
-			alt="Image"
-			class="w-full h-full object-cover"
-		/>
-		<img
-			src="https://picsum.photos/600/300"
-			alt="Image"
-			class="w-full h-full object-cover"
-		/>
-		<img
-			src="https://picsum.photos/600/300"
-			alt="Image"
-			class="w-full h-full object-cover"
-		/>
+		@for (image of images; track image) {
+			<button
+				type="button"
+				class="w-full h-full object-cover rounded-lg focus:ring-2 focus:ring-blue-500 cursor-pointer"
+				(click)="selectImage(image)"
+			>
+				<img
+					[src]="safeUrl(image)"
+					alt="Image"
+					class="w-full h-full object-cover rounded-lg"
+				/>
+			</button>
+		}
 	</div>
 	<div class="grid grid-cols-5 gap-2 mt-2">
-		<div
-			class="w-full h-full bg-gray-400 bg-gradient-to-r from-gray-400 to-gray-600 rounded-md"
+		<button
+			type="button"
+			class="w-full h-full bg-gray-400 bg-gradient-to-r from-gray-400 cursor-pointer to-gray-600 rounded-md focus:ring-2 focus:ring-blue-500"
+			[ngClass]="bgColors('Gradient gray')"
+			(click)="selectColor('Gradient gray')"
 		>
 			&nbsp;
 			<span class="sr-only">Gradiente gray</span>
-		</div>
-		<div
-			class="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-700 rounded-md"
+		</button>
+		<button
+			type="button"
+			class="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-700 cursor-pointer rounded-md focus:ring-2 focus:ring-blue-500"
+			[ngClass]="bgColors('Gradient blue')"
+			(click)="selectColor('Gradient blue')"
 		>
 			&nbsp;
 			<span class="sr-only">Gradiente blue</span>
-		</div>
-		<div
-			class="w-full h-full bg-gradient-to-r from-red-700 to-orange-500 rounded-md"
+		</button>
+		<button
+			type="button"
+			class="w-full h-full bg-gradient-to-r from-red-700 to-orange-500 cursor-pointer rounded-md focus:ring-2 focus:ring-blue-500"
+			[ngClass]="bgColors('Gradient red')"
+			(click)="selectColor('Gradient red')"
 		>
 			&nbsp;
 			<span class="sr-only">Gradiente red</span>
-		</div>
-		<div
-			class="w-full h-full bg-gradient-to-r from-blue-400 to-green-400 rounded-md"
+		</button>
+		<button
+			type="button"
+			class="w-full h-full bg-gradient-to-r from-blue-400 to-green-400 cursor-pointer rounded-md focus:ring-2 focus:ring-blue-500"
+			[ngClass]="bgColors('Gradient green')"
+			(click)="selectColor('Gradient green')"
 		>
 			&nbsp;
 			<span class="sr-only">Gradiente green</span>
-		</div>
+		</button>
 		<app-ui-button variant="secondary" [fullWidth]="true"> ... </app-ui-button>
 	</div>
 </div>

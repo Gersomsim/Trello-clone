@@ -26,6 +26,7 @@ import { UiEditFullTaskComponent } from './organism/ui-edit-full-task/ui-edit-fu
 import { DialogModule } from '@angular/cdk/dialog'
 import { UiTaskComponent } from './molecules/ui-task/ui-task.component'
 import { ReactiveFormsModule } from '@angular/forms'
+import { UiEditWorkspaceComponent } from './molecules/ui-edit-workspace/ui-edit-workspace.component'
 
 @NgModule({
 	declarations: [
@@ -48,6 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 		UiCardComponent,
 		UiEditFullTaskComponent,
 		UiTaskComponent,
+		UiEditWorkspaceComponent,
 	],
 	imports: [
 		CommonModule,
@@ -78,6 +80,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 		UiCardComponent,
 		UiEditFullTaskComponent,
 		UiTaskComponent,
+		UiEditWorkspaceComponent,
 	],
 })
 export class ComponentsModule {}

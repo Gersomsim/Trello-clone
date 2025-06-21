@@ -25,13 +25,29 @@
 			New board
 		</h2>
 		<div class="flex flex-col gap-2 my-4 relative h-32">
-			<img
-				src="https://picsum.photos/600/300"
-				alt="Image"
-				class="w-3/4 mx-auto rounded-lg overflow-hidden absolute top-0 left-0 h-full object-cover right-0"
-			/>
+			@if (image) {
+				<img
+					[src]="image"
+					alt="Image"
+					class="w-3/4 mx-auto rounded-lg overflow-hidden absolute top-0 left-0 h-full object-cover right-0"
+				/>
+			}
+			@if (color) {
+				<div
+					[ngClass]="bgColors(color)"
+					class="w-3/4 mx-auto rounded-lg overflow-hidden absolute top-0 left-0 h-full object-cover right-0"
+				></div>
+			}
 		</div>
-		<app-ui-select-image-board />
-		<app-ui-form-new-board />
+		<app-ui-select-image-board
+			(imageSelected)="loadImage($event)"
+			(colorSelected)="loadColor($event)"
+		/>
+		<app-ui-form-new-board
+			[workspaceId]="workspaceId"
+			[image]="image"
+			[color]="color"
+			(boardCreated)="loadBoardCreated()"
+		/>
 	</div>
 </ng-template>

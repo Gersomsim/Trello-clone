@@ -2,13 +2,15 @@
 	class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
 >
 	<a routerLink="/b/{{ board.id }}/tasks">
-		<img class="rounded-t-lg" [src]="board.image" [alt]="board.name" />
-	</a>
-	<div class="py-1 px-2">
-		<a routerLink="/b/{{ board.id }}/tasks">
+		@if (board.image) {
+			<img class="rounded-t-lg h-20 w-full" [src]="board.image" [alt]="board.name" />
+		} @else {
+			<div [ngClass]="bgColors(board.color)" class="rounded-t-lg h-20 w-full"></div>
+		}
+		<div class="py-1 px-2">
 			<h5 class="font-semibold tracking-tight text-gray-900 dark:text-white text-sm">
 				{{ board.name }}
 			</h5>
-		</a>
-	</div>
+		</div>
+	</a>
 </div>

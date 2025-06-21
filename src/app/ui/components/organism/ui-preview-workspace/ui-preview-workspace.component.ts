@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core'
+import { Component, inject, Input, signal } from '@angular/core'
 import { Board, Workspace } from '@core/domain/entities'
 import { faTrello } from '@fortawesome/free-brands-svg-icons'
-import { faCog, faEllipsis, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faUser } from '@fortawesome/free-solid-svg-icons'
+import { BoardFacade } from '@infrastructure/storage/facades/board.facade'
 
 @Component({
 	selector: 'app-ui-preview-workspace',
@@ -10,20 +11,18 @@ import { faCog, faEllipsis, faUser } from '@fortawesome/free-solid-svg-icons'
 	styles: ``,
 })
 export class UiPreviewWorkspaceComponent {
+	boardFacade = inject(BoardFacade)
 	@Input() workspace!: Workspace
-	@Input() boards: Board[] = [
-		{
-			id: '1',
-			name: 'Board 1',
-			image: 'https://picsum.photos/600/200',
-		},
-		{
-			id: '2',
-			name: 'Board 2',
-			image: 'https://picsum.photos/600/200',
-		},
-	]
+	boards = signal<Board[]>([])
+
 	faCog = faCog
 	faUser = faUser
 	faTrello = faTrello
+
+	ngOnInit() {
+		this.boardFacade.getBoardsByWorkspaceId(this.workspace.id)
+		this.boardFacade.boards$.subscribe((boards) => {
+			this.boards.set(boards)
+		})
+	}
 }

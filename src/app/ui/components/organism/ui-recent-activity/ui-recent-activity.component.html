@@ -3,7 +3,7 @@
 	<span>Recent activity</span>
 </h4>
 <div class="grid grid-cols-3 gap-2">
-	@for (board of boards; track board.id) {
+	@for (board of boards(); track board.id) {
 		<app-ui-preview-board [board]="board" />
 	}
 </div>
