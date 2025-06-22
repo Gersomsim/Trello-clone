@@ -1,7 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog'
-import { Component, inject, Input } from '@angular/core'
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core'
 import { UiEditFullTaskComponent } from '../../organism/ui-edit-full-task/ui-edit-full-task.component'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { Task } from '@core/domain/entities/task.entity'
 
 @Component({
@@ -12,8 +12,10 @@ import { Task } from '@core/domain/entities/task.entity'
 })
 export class UiTaskComponent {
 	@Input() task!: Task
+	@Output() taskDone = new EventEmitter<Task>()
 	dilog = inject(Dialog)
 	faPencil = faPenToSquare
+	faCheck = faCheck
 
 	openModal() {
 		this.dilog.open(UiEditFullTaskComponent, {
@@ -30,6 +32,13 @@ export class UiTaskComponent {
 				'lg:w-2/3',
 			],
 			backdropClass: ['bg-black/30', 'backdrop-blur-sm'],
+			data: {
+				task: this.task,
+			},
 		})
+	}
+	markAsDone() {
+		this.task.done = !this.task.done
+		this.taskDone.emit(this.task)
 	}
 }

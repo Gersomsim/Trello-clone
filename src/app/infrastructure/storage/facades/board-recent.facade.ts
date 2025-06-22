@@ -13,12 +13,15 @@ export class BoardRecentFacade {
 		this.store.selectAllEntities().subscribe((boards) => {
 			const boardIndex = boards.findIndex((b) => b.id === board.id)
 			if (boardIndex !== -1) {
-				this.reorderBoard(board, boardIndex, boards)
+				if (boards.length === 4) {
+					this.store.removeEntity(boards[0].id)
+				}
+				if (boardIndex !== 0) {
+					this.reorderBoard(board, boardIndex, boards)
+				}
+			} else {
+				this.store.addEntity(board)
 			}
-			if (boards.length === 10) {
-				this.store.removeEntity(boards[0].id)
-			}
-			this.store.addEntity(board)
 		})
 	}
 

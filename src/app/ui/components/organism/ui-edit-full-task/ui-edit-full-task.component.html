@@ -8,7 +8,11 @@
 	<hr class="mt-2 border-gray-200 dark:border-gray-800" />
 	<main class="flex gap-5 w-full">
 		<div class="w-2/3 pt-4 pb-10 h-full">
-			<div class="flex flex-col gap-2 max-h-[calc(100vh-24rem)] overflow-y-auto">
+			<form
+				[formGroup]="form"
+				class="flex flex-col gap-2 max-h-[calc(100vh-24rem)] overflow-y-auto"
+				(ngSubmit)="editTask()"
+			>
 				<div class="sticky top-0 z-10 bg-white dark:bg-slate-900 py-2">
 					<div class="flex gap-2 items-center">
 						<button
@@ -17,10 +21,25 @@
 							<span class="sr-only">Completar tarea</span>
 							<fa-icon
 								[icon]="faCheck"
-								class="hidden group-hover:block transition-all duration-500"
+								class="transition-all duration-500"
+								[ngClass]="{
+									'text-green-500': task.done,
+									'hidden group-hover:block': !task.done,
+								}"
 							/>
 						</button>
-						<h3 class="font-bold text-2xl">{{ task.name }}</h3>
+						<h3 class="font-bold text-xl w-full">
+							@if (editName) {
+								<app-ui-input
+									type="text"
+									class="w-full"
+									formControlName="name"
+									(blur)="editName = false"
+								/>
+							} @else {
+								<span (click)="editName = true">{{ task.name }}</span>
+							}
+						</h3>
 					</div>
 					<div class="flex gap-2 items-center my-3 justify-between">
 						<app-ui-button variant="ghost" size="sm">
@@ -51,10 +70,24 @@
 						<h3 class="font-bold">Description</h3>
 					</div>
 					<div class="ml-5">
-						{{ task.description }}
+						@if (editDescription) {
+							<textarea
+								#description
+								class="w-full bg-gray-100 dark:bg-gray-800 rounded-md p-2 resize-none focus:outline-none focus:ring-0 focus:border-0 focus:ring-0 focus:ring-offset-0"
+								rows="3"
+								formControlName="description"
+								(blur)="editTask()"
+							></textarea>
+						} @else {
+							<span
+								(click)="editDescriptionAndFocus()"
+								class="cursor-pointer min-h-10 bg-gray-100 dark:bg-gray-700 w-full block rounded-md p-2"
+								>{{ task.description }}</span
+							>
+						}
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<div class="w-1/3 bg-gray-100 dark:bg-gray-800 p-3 min-h-full">
 			<div

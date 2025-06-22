@@ -7,15 +7,22 @@
 		<span class="text-sm text-white transition-all duration-500">New list</span>
 	</button>
 } @else {
-	<form class="flex flex-col gap-2 bg-gray-900 dark:bg-gray-950 rounded-lg p-4">
+	<form
+		class="flex flex-col gap-2 bg-gray-900 dark:bg-gray-950 rounded-lg p-4"
+		[formGroup]="form"
+		(ngSubmit)="createList()"
+	>
 		<app-ui-input
 			placeholder="New list"
 			inputType="text"
 			addClass="w-full"
 			size="sm"
+			formControlName="name"
 		/>
 		<div class="flex gap-2">
-			<app-ui-button variant="primary" addClass="w-full"> Add list </app-ui-button>
+			<app-ui-button variant="primary" addClass="w-full" type="submit">
+				Add list
+			</app-ui-button>
 			<app-ui-button variant="light" addClass="w-full" (click)="toggleIsOpen()">
 				<fa-icon [icon]="faXmark" />
 			</app-ui-button>

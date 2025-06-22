@@ -26,23 +26,15 @@
 				</div>
 			</nav>
 			<div class="flex flex-row gap-4 grow w-full mx-4 h-full">
-				<div
-					class="w-2/10 bg-gray-950 rounded-lg p-4 overflow-y-auto flex flex-col gap-4 shadow-lg h-fit max-h-full"
-				>
-					<div class="flex flex-col gap-4">
-						<div class="flex flex-row gap-2 justify-between items-center">
-							<h2>Nombre del tablero</h2>
-							<div>...</div>
-						</div>
+				@for (list of lists; track list.id) {
+					<div class="w-2/10">
+						<app-ui-list-task [list]="list" />
 					</div>
-					<div class="flex flex-col gap-4">
-						@for (task of tasks; track task.id) {
-							<app-ui-task [task]="task" />
-						}
-					</div>
-				</div>
+				}
 				<div class="w-2/10">
-					<app-ui-new-list />
+					@if (board) {
+						<app-ui-new-list [boardId]="board.id" />
+					}
 				</div>
 			</div>
 		</div>

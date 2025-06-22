@@ -27,6 +27,7 @@ import { DialogModule } from '@angular/cdk/dialog'
 import { UiTaskComponent } from './molecules/ui-task/ui-task.component'
 import { ReactiveFormsModule } from '@angular/forms'
 import { UiEditWorkspaceComponent } from './molecules/ui-edit-workspace/ui-edit-workspace.component'
+import { UiListTaskComponent } from './organism/ui-list-task/ui-list-task.component'
 
 @NgModule({
 	declarations: [
@@ -50,6 +51,7 @@ import { UiEditWorkspaceComponent } from './molecules/ui-edit-workspace/ui-edit-
 		UiEditFullTaskComponent,
 		UiTaskComponent,
 		UiEditWorkspaceComponent,
+		UiListTaskComponent,
 	],
 	imports: [
 		CommonModule,
@@ -81,6 +83,7 @@ import { UiEditWorkspaceComponent } from './molecules/ui-edit-workspace/ui-edit-
 		UiEditFullTaskComponent,
 		UiTaskComponent,
 		UiEditWorkspaceComponent,
+		UiListTaskComponent,
 	],
 })
 export class ComponentsModule {}

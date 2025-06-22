@@ -7,11 +7,23 @@
 		<span class="text-sm transition-all duration-500">New task</span>
 	</button>
 } @else {
-	<form class="flex flex-col gap-2">
-		<app-ui-input placeholder="New task" inputType="text" addClass="w-full" />
+	<form class="flex flex-col gap-2" [formGroup]="form" (ngSubmit)="createTask()">
+		<app-ui-input
+			placeholder="New task"
+			inputType="text"
+			addClass="w-full"
+			formControlName="name"
+		/>
 		<div class="flex gap-2">
-			<app-ui-button variant="primary" addClass="w-full"> Add task </app-ui-button>
-			<app-ui-button variant="light" addClass="w-full" (click)="toggleIsOpen()">
+			<app-ui-button variant="primary" addClass="w-full" type="submit">
+				Add task
+			</app-ui-button>
+			<app-ui-button
+				variant="light"
+				type="submit"
+				addClass="w-full"
+				(click)="toggleIsOpen()"
+			>
 				<fa-icon [icon]="faXmark" />
 			</app-ui-button>
 		</div>
