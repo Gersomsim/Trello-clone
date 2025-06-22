@@ -1,6 +1,14 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { OverlayModule } from '@angular/cdk/overlay'
+import {
+	CdkDragDrop,
+	CdkDrag,
+	CdkDropList,
+	CdkDropListGroup,
+	moveItemInArray,
+	transferArrayItem,
+} from '@angular/cdk/drag-drop'
 
 import { UiInputComponent } from './atoms/ui-input/ui-input.component'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
@@ -61,6 +69,9 @@ import { UiListTaskComponent } from './organism/ui-list-task/ui-list-task.compon
 		OverlayModule,
 		DialogModule,
 		ReactiveFormsModule,
+		CdkDropListGroup,
+		CdkDropList,
+		CdkDrag,
 	],
 	exports: [
 		UiInputComponent,

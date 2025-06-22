@@ -7,9 +7,16 @@
 			<div>...</div>
 		</div>
 	</div>
-	<div class="flex flex-col gap-4">
+	<div
+		class="flex flex-col gap-4 overflow-y-auto pt-5"
+		cdkDropList
+		[cdkDropListData]="list.tasks"
+		[cdkDropListConnectedTo]="getConnectedDropLists()"
+		(cdkDropListDropped)="drop($event)"
+		[id]="listId"
+	>
 		@for (task of list.tasks; track task.id) {
-			<app-ui-task [task]="task" (taskDone)="updateTask($event)" />
+			<app-ui-task [task]="task" (taskDone)="updateTask($event)" cdkDrag />
 		}
 		<app-ui-new-task (taskCreated)="addClass($event)" />
 	</div>
