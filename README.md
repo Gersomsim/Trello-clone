@@ -56,8 +56,8 @@ Este proyecto es una implementación completa de un sistema de gestión de proye
 1. **Clonar el repositorio**
 
    ```bash
-   git clone https://github.com/tu-usuario/trello-clone.git
-   cd trello-clone
+   git clone https://github.com/Gersomsim/Trello-clone.git
+   cd Trello-clone
    ```
 
 2. **Instalar dependencias**
@@ -176,7 +176,7 @@ SOFTWARE.
 
 - **Email**: gersomhernandez@me.com
 - **GitHub**: [@Gersomsim](https://github.com/Gersomsim)
-- **LinkedIn**: [Tu Perfil](https://linkedin.com/in/gersom-hernandez)
+- **LinkedIn**: [Gersom Hernandez](https://linkedin.com/in/gersom-hernandez)
 
 ---
 
